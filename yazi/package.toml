@@ -1,0 +1,5 @@
+[plugin]
+deps = [{ use = "yazi-rs/plugins:git", rev = "71c4fc2" }, { use = "Lil-Dank/lazygit", rev = "c82794f" }, { use = "yazi-rs/plugins:jump-to-char", rev = "71c4fc2" }, { use = "boydaihungst/simple-mtpfs.yazi", rev = "4941d8f" }]
+
+[flavor]
+deps = [{ use = "BennyOe/tokyo-night", rev = "024fb09" }]
