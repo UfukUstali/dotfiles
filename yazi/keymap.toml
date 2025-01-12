@@ -18,6 +18,7 @@ prepend_keymap = [
   { on = [ "g", "i" ], run = "plugin lazygit", desc = "run lazygit" },
   { on = [ "F" ], run = "filter --smart", desc = "Filter files" },
   { on = "f", run = "plugin jump-to-char", desc = "Jump to char" },
+  { on = [ "c", "m" ], run = "plugin chmod", desc = "Chmod selected files" },
 
   # simple-mtpfs plugin
   { on = [ "M", "m" ], run = "plugin simple-mtpfs --args=select-then-mount", desc = "Select device then mount" },
@@ -28,4 +29,8 @@ prepend_keymap = [
   { on = [ "M", "u" ], run = "plugin simple-mtpfs --args=select-then-unmount", desc = "Select device then unmount" },
   { on = [ "g", "m" ], run = "plugin simple-mtpfs --args=jump-to-device", desc = "Select device then jump to its mount point" },
   { on = [ "`", "`" ], run = "plugin simple-mtpfs --args=jump-back-prev-cwd", desc = "Jump back to the position before jumped to device" },
+  { on = [ "T" ], run = "plugin max-preview", desc = "Toggle maximize" },
+  { on = [ "<C-n>" ], run = '''
+      shell 'ripdrag "$@" -i -W 40 -H 40 -A -n -x 2>/dev/null &' --confirm
+    ''' },
 ]
