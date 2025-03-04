@@ -38,6 +38,7 @@ alias ts="sudo tailscale"
 #set -x NIX_LD (nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD ')
 set -x EDITOR nvim
 #set -gx PATH "/home/ufuk/.local/share/nvim/mason/bin" $PATH
+set -gx PATH "/home/ufuk/projects/personal/schemadiff/bin" $PATH
 
 # pnpm
 set -gx PNPM_HOME "/home/ufuk/.local/share/pnpm"
