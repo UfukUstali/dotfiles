@@ -32,6 +32,10 @@ function cl
   cloc --vcs=git --include-ext=c,cats,ec,idc,pgc,C,c++,c++m,cc,ccm,CPP,cpp,cppm,cxx,cxxm,h++,inl,ipp,ixx,pcc,tcc,tpp,H,h,hh,hpp,hxx,css,fish,go,ʕ◔ϖ◔ʔ,java,_js,bones,cjs,es6,jake,jakefile,js,jsb,jscad,jsfl,jsm,jss,mjs,njs,pac,sjs,ssjs,xsjs,xsjslib,lua,nse,p8,pd_lua,rbxs,wlua,nix,eliom,eliomi,ml,ml4,mli,mll,mly,odin,buck,build.bazel,gclient,gyp,gypi,lmi,py,py3,pyde,pyi,pyp,pyt,pyw,sconscript,sconstruct,snakefile,tac,workspace,wscript,wsgi,xpy,rs,rs.in,cql,mysql,psql,SQL,sql,tab,udf,viw,svelte,swift,mts,tsx,ts,vim,vue,zig,zsh $argv[1]
 end
 
+function pd
+ pnpm dev
+end
+
 alias ls="eza -alh --git --git-repos"
 alias ts="sudo tailscale"
 
