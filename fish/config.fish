@@ -3,6 +3,9 @@ if status is-interactive
   fish_default_key_bindings
 end
 
+bind \b backward-kill-word
+bind \e\[3\;5~ kill-word
+
 function y
   set tmp (mktemp -t "yazi-cwd.XXXXXX")
   yazi $argv --cwd-file="$tmp"
