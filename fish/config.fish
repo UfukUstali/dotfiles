@@ -54,3 +54,4 @@ if not string match -q -- $PNPM_HOME $PATH
 end
 # pnpm end
 zoxide init --cmd cd fish | source
+fnm env --use-on-cd --shell fish | source
