@@ -54,4 +54,10 @@ if not string match -q -- $PNPM_HOME $PATH
 end
 # pnpm end
 zoxide init --cmd cd fish | source
-fnm env --use-on-cd --shell fish | source
+fnm env --shell fish | source
+function _fnm_autoload_hook --on-variable PWD --description 'Change Node version on directory change'
+    status --is-command-substitution; and return
+    if test -f .node-version -o -f .nvmrc -o -f package.json
+        fnm use --silent-if-unchanged
+    end
+end
