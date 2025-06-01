@@ -13,7 +13,7 @@
 # run  = "plugin jump-to-char"
 # desc = "Jump to char"
 
-[mgr]
+[manager]
 prepend_keymap = [
   { on = [ "F" ], run = "filter --smart", desc = "Filter files" },
   { on = "f", run = "plugin jump-to-char", desc = "Jump to char" },
