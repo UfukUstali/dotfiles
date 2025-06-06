@@ -9,9 +9,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland?rev=5ee35f914f921e5696030698e74fb5566a804768";
+    hyprland.url = "github:hyprwm/Hyprland?rev=2794f485cb5d52b3ff572953ddcfaf7fd3c25182";
     hy3 = {
-      url = "github:outfoxxed/hy3?rev=a1f892fa218f6def606ccb1f81ddc2e57d0551b8"; # where {version} is the hyprland release version
+      url = "github:outfoxxed/hy3?rev=567dc9dd20e15d95a56a81c516a70dba30bc2c9c"; # where {version} is the hyprland release version
       # or "github:outfoxxed/hy3" to follow the development branch.
       # (you may encounter issues if you dont do the same for hyprland)
       inputs.hyprland.follows = "hyprland";

@@ -125,6 +125,7 @@
     libnotify
     kitty
     wofi
+    rofi-wayland
     libinput
     firefox
     bluez
@@ -255,6 +256,7 @@
     libinput.enable = true;
     tailscale.enable = true;
     upower.enable = true;
+    flatpak.enable = true;
   };
 
   programs = {

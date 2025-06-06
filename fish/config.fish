@@ -39,8 +39,12 @@ function pd
  pnpm dev
 end
 
+function pi
+ pnpm install --reporter default
+end
+
 alias ls="eza -alh --git --git-repos"
-alias ts="sudo tailscale"
+alias ts="tailscale"
 
 #set -x NIX_LD (nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD ')
 set -x EDITOR nvim
@@ -53,7 +57,9 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+
 zoxide init --cmd cd fish | source
+
 fnm env --shell fish | source
 function _fnm_autoload_hook --on-variable PWD --description 'Change Node version on directory change'
     status --is-command-substitution; and return
@@ -61,3 +67,5 @@ function _fnm_autoload_hook --on-variable PWD --description 'Change Node version
         fnm use --silent-if-unchanged
     end
 end
+
+# set -gx XDG_DATA_DIRS $XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share
