@@ -1,4 +1,4 @@
-{ lib, pkgs, hyprlandPkgs, hy3Pkgs, ...}: {
+{ lib, pkgs, hyprlandPkgs, hy3Pkgs, hyprDyCursorsPkgs, hyprspacePkgs, ...}: {
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -7,6 +7,8 @@
     settings = {};
     plugins = [
       hy3Pkgs.hy3
+      hyprspacePkgs.Hyprspace
+      hyprDyCursorsPkgs.hypr-dynamic-cursors
     ];
     extraConfig = ''
       source = ./main-uwsm.conf
