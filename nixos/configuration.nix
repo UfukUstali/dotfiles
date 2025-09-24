@@ -125,7 +125,6 @@
     libnotify
     kitty
     wofi
-    rofi-wayland
     libinput
     firefox
     bluez
@@ -168,9 +167,13 @@
     };
 
     logind = {
-      lidSwitch = "suspend";
-      lidSwitchDocked = "suspend";
-      lidSwitchExternalPower = "suspend";
+      settings = {
+        Login = {
+          HandleLidSwitch = "suspend";
+          HandleLidSwitchDocked = "suspend";
+          HandleLidSwitchExternalPower = "suspend";
+        };
+      };
     };
 
     # 1-2 for ddcutil
@@ -184,6 +187,7 @@
 
     resolved = {
       enable = true;
+      dnssec = "allow-downgrade";
       dnsovertls = "opportunistic";
       domains = [ "~." ];
       fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];

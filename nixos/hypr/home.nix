@@ -1,4 +1,4 @@
-{ lib, pkgs, hyprlandPkgs, hy3Pkgs, hyprDyCursorsPkgs, hyprspacePkgs, ...}: {
+{ lib, pkgs, hyprlandPkgs, hy3Pkgs, hyprDyCursorsPkgs, ...}: {
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -7,7 +7,6 @@
     settings = {};
     plugins = [
       hy3Pkgs.hy3
-      hyprspacePkgs.Hyprspace
       hyprDyCursorsPkgs.hypr-dynamic-cursors
     ];
     extraConfig = ''
@@ -142,10 +141,11 @@
           Type = "dbus";
           BusName = "org.freedesktop.Notifications";
           ExecStart = "${pkgs.swaynotificationcenter}/bin/swaync";
-          ExecReload = ''
-            ${pkgs.swaynotificationcenter}/bin/swaync-client --reload-config;
+          ExecReload = "${pkgs.writeShellScript "swaync-reload" ''
+            #!/run/current-system/sw/bin/bash
+            ${pkgs.swaynotificationcenter}/bin/swaync-client --reload-config
             ${pkgs.swaynotificationcenter}/bin/swaync-client --reload-css
-          '';
+          ''}";
           Restart = "on-failure";
         };
 

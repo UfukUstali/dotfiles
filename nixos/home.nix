@@ -1,4 +1,4 @@
-{ lib, config, pkgs, hyprlandPkgs, ... }:
+{ lib, config, pkgs, hyprlandPkgs, chromePkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -51,7 +51,7 @@
 
     # common apps/utils
     legcord
-    google-chrome
+    chromePkgs.google-chrome
     vscode
     unzip
     remmina
@@ -60,7 +60,8 @@
     libreoffice-qt6-fresh
     weylus
     minio-client
-    testdisk
+    traceroute
+    ghostty
 
     # thm vpn
     openconnect
@@ -68,6 +69,8 @@
     # other
     wev
     hw-probe
+    go-passbolt-cli
+    railway
 
     # languages
     gcc
@@ -76,6 +79,7 @@
     go
     rustc
     cargo
+    bun
 
     # soon(TM)
     # scrcpy
@@ -140,6 +144,7 @@
       extraConfig = {
         pull.rebase = true;
         rerere.enabled = true;
+        rebase."updateRefs" = true;
         init.defaultBranch = "master";
       };
     };

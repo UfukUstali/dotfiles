@@ -9,6 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    google-chrome.url = "github:nixos/nixpkgs/nixos-unstable";
+
     hyprland.url = "github:hyprwm/Hyprland";
     hy3 = {
       url = "github:outfoxxed/hy3";
@@ -18,20 +20,17 @@
         url = "github:VirtCode/hypr-dynamic-cursors";
         inputs.hyprland.follows = "hyprland";
     };
-    hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
-    };
   };
 
-  outputs = { self, nixpkgs, hyprland, hy3, hypr-dynamic-cursors, hyprspace, ... }@inputs:
+  outputs = { self, nixpkgs, hyprland, hy3, hypr-dynamic-cursors, google-chrome, ... }@inputs:
     let
       system = "x86_64-linux";
+      chromePkgs = import google-chrome { inherit system; config.allowUnfree = true; };
     in {
       nixosConfigurations = {
         ufuk-laptop = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs system;
+            inherit inputs system chromePkgs;
             hyprlandPkgs = hyprland.packages.${system};
           };
           modules = [
@@ -41,11 +40,10 @@
             {
               home-manager = {
                 extraSpecialArgs = {
-                  inherit inputs system;
+                  inherit inputs system chromePkgs;
                   hyprlandPkgs = hyprland.packages.${system};
                   hy3Pkgs = hy3.packages.${system};
                   hyprDyCursorsPkgs = hypr-dynamic-cursors.packages.${system};
-                  hyprspacePkgs = hyprspace.packages.${system};
                 };
                 users.ufuk = {
                   imports = [
