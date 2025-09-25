@@ -247,13 +247,7 @@
       openFirewall = true;
     };
 
-    tlp = {
-      enable = true;
-      settings = {
-        START_CHARGE_THRESH_BAT0 = 75;
-        STOP_CHARGE_THRESH_BAT0 = 85;
-      };
-    };
+    power-profiles-daemon.enable = true;
 
     # gvfs.enable = true;
     printing.enable = true;
@@ -261,6 +255,18 @@
     tailscale.enable = true;
     upower.enable = true;
     flatpak.enable = true;
+  };
+  # custom service to set battery thresholds
+  systemd.services.battery-charge-thresholds = {
+    description = "Set battery charge thresholds";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "multi-user.target" ];
+    serviceConfig.Type = "oneshot";
+
+    script = ''
+    echo 75 > /sys/class/power_supply/BATT/charge_control_start_threshold
+    echo 85 > /sys/class/power_supply/BATT/charge_control_end_threshold
+    '';
   };
 
   programs = {
