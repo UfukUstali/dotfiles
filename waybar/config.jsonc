@@ -19,7 +19,7 @@
     },
     "clock": {
         "format": "{:%H:%M:%S} ",
-        "interval": 1,   
+        "interval": 1,
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "format": {
@@ -38,7 +38,7 @@
         "tooltip-format-disconnected": "Error",
         "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
         "tooltip-format-ethernet": "{ifname} 🖧 ",
-        "on-click": "kitty impala"
+        "on-click": "ghostty --class=foo.impala -e impala"
     },
     "bluetooth": {
         "format-on": "󰂯",
@@ -50,7 +50,7 @@
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
         "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
-        "on-click-right": "kitty bluetui",
+        "on-click-right": "ghostty --class=foo.bluetui -e bluetui",
     }, 
     "battery": {
         "interval":1,
