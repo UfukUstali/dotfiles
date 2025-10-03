@@ -150,6 +150,31 @@
     };
   };
 
+  systemd.user = {
+    enable = true;
+    startServices = "sd-switch";
+    services = {
+      google-chrome = {
+        Unit = {
+          Description = "Google Chrome browser";
+          Documentation = "https://www.google.com/chrome/";
+          PartOf = [ "graphical-session.target" ];
+          After = [ "graphical-session.target" ];
+        };
+
+        Service = {
+          ExecStart = ''${chromePkgs.google-chrome}/bin/google-chrome-stable --enable-features=TouchpadOverscrollHistoryNavigation'';
+          Restart = "on-failure";
+          Slice = "session.slice";
+        };
+
+        Install = {
+          WantedBy = [ "graphical-session.target" ];
+        };
+      };
+    };
+  };
+
   services = {
     playerctld.enable = true;
   };
