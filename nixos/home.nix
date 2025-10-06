@@ -150,6 +150,11 @@
     };
   };
 
+  xdg.configFile."xdg-desktop-portal-termfilechooser/config".text = ''
+    [filechooser]
+    cmd=${./scripts/xdg-termfilechooser.sh}
+    default_dir=$HOME
+  '';
   systemd.user = {
     enable = true;
     startServices = "sd-switch";
@@ -170,6 +175,19 @@
 
         Install = {
           WantedBy = [ "graphical-session.target" ];
+        };
+      };
+      xdg-desktop-portal-termfilechooser = {
+        Unit = {
+          Description = "Portal service (terminal file chooser implementation)";
+          PartOf = "graphical-session.target";
+          After = "graphical-session.target";
+        };
+        Service = {
+          Type = "dbus";
+          BusName = "org.freedesktop.impl.portal.desktop.termfilechooser";
+          ExecStart = "${pkgs.xdg-desktop-portal-termfilechooser}/libexec/xdg-desktop-portal-termfilechooser";
+          Restart = "on-failure";
         };
       };
     };

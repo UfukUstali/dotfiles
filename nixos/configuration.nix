@@ -147,9 +147,24 @@
       powerOnBoot = true;
     };
   };
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk hyprlandPkgs.xdg-desktop-portal-hyprland ];
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        hyprlandPkgs.xdg-desktop-portal-hyprland
+        xdg-desktop-portal-termfilechooser
+      ];
+      config = {
+        hyprland = {
+          default = [
+            "hyprland"
+            "gtk"
+          ];
+          "org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" ];
+        };
+      };
+    };
   };
 
   # List services that you want to enable:
@@ -256,6 +271,7 @@
     upower.enable = true;
     flatpak.enable = true;
   };
+
   # custom service to set battery thresholds
   systemd.services.battery-charge-thresholds = {
     description = "Set battery charge thresholds";
@@ -264,8 +280,8 @@
     serviceConfig.Type = "oneshot";
 
     script = ''
-    echo 75 > /sys/class/power_supply/BATT/charge_control_start_threshold
-    echo 85 > /sys/class/power_supply/BATT/charge_control_end_threshold
+      echo 75 > /sys/class/power_supply/BATT/charge_control_start_threshold
+      echo 85 > /sys/class/power_supply/BATT/charge_control_end_threshold
     '';
   };
 
