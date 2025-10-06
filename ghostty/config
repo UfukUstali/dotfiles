@@ -1,0 +1,6 @@
+theme = Kitty Default
+background = #000000
+background-opacity = 0.85
+font-size = 10
+window-show-tab-bar = never
+keybind = ctrl+enter=toggle_tab_overview
