@@ -62,6 +62,8 @@
     minio-client
     traceroute
     ghostty
+    sioyek
+    tectonic-unwrapped
 
     # thm vpn
     openconnect
@@ -80,6 +82,8 @@
     rustc
     cargo
     bun
+    texliveFull
+    texpresso
 
     # soon(TM)
     # scrcpy
