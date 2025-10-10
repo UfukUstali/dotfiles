@@ -22,3 +22,8 @@ prepend_fetchers = [
 
 [preview]
 wrap = "yes"
+
+[opener]
+extract = [
+  { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+]
