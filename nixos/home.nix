@@ -84,6 +84,14 @@
     bun
     texliveFull
     texpresso
+    radianWrapper
+    (rWrapper.override {
+      packages = with rPackages; [
+        tidyverse psych car MASS lubridate broom ggpubr
+        lmtest sandwich lme4 glmnet survival forecast
+        knitr kableExtra
+      ];
+    })
 
     # soon(TM)
     # scrcpy
