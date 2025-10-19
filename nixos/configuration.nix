@@ -54,7 +54,7 @@
         };
       };
     };
-    nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+    nameservers = [ "127.0.0.1" ];
     nftables.enable = true;
     firewall = {
       enable = true;
@@ -200,12 +200,30 @@
       KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
     '';
 
-    resolved = {
+    unbound = {
       enable = true;
-      dnssec = "allow-downgrade";
-      dnsovertls = "opportunistic";
-      domains = [ "~." ];
-      fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+      settings = {
+        server = {
+          interface = [ "127.0.0.1" "::1" ];
+          access-control = [
+            "127.0.0.0/8 allow"
+            "::1 allow"
+          ];
+          qname-minimisation = "yes";
+          prefetch = "yes";
+          hide-identity = "yes";
+          hide-version = "yes";
+        };
+
+        forward-zone = [{
+          name = ".";
+          forward-addr = [
+            "1.1.1.1@853"
+            "1.0.0.1@853"
+          ];
+          forward-tls-upstream = "yes";
+        }];
+      };
     };
 
     samba = {
