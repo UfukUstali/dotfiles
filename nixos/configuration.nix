@@ -31,7 +31,10 @@
   virtualisation = {
     # waydroid.enable = true;
     docker.enable = true;
-    spiceUSBRedirection.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu.ovmf.enable = true;
+    };
   };
 
   # Enable networking
@@ -59,6 +62,7 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [ 33611 3000 ];
+      trustedInterfaces = [ "virbr0" ];
     };
   };
 
@@ -98,7 +102,7 @@
       ufuk = {
         isNormalUser = true;
         description = "Ufuk Ustali";
-        extraGroups = [ "networkmanager" "wheel" "ydotool" "i2c" "uinput" "docker" ];
+        extraGroups = [ "networkmanager" "wheel" "ydotool" "i2c" "uinput" "docker" "libvirtd" "wireshark" ];
         packages = with pkgs; [ ];
         shell = pkgs.fish;
       };
@@ -132,8 +136,10 @@
     gnome-themes-extra
     home-manager
     openssl
-    qemu
-    quickemu
+    usbutils
+    virt-manager
+    wireshark
+    dnsmasq
   ];
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -306,6 +312,10 @@
   programs = {
     ydotool.enable = true;
     fish.enable = true;
+    wireshark = {
+      enable = true;
+      usbmon.enable = true;
+    };
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
