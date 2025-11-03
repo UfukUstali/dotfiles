@@ -221,14 +221,26 @@
           hide-version = "yes";
         };
 
-        forward-zone = [{
-          name = ".";
-          forward-addr = [
-            "1.1.1.1@853"
-            "1.0.0.1@853"
-          ];
-          forward-tls-upstream = "yes";
-        }];
+        forward-zone = [
+          {
+            name = ".";
+            forward-addr = [
+              "1.1.1.1@853"
+              "1.0.0.1@853"
+            ];
+            forward-tls-upstream = "yes";
+          }
+          {
+            name = "youtrack.mni.thm.de";
+            forward-addr = [
+              "192.168.186.83"
+            ];
+          }
+          {
+            name = "ts.net.";
+            forward-addr = [ "100.100.100.100" ];
+          }
+        ];
       };
     };
 
@@ -297,16 +309,35 @@
   };
 
   # custom service to set battery thresholds
-  systemd.services.battery-charge-thresholds = {
-    description = "Set battery charge thresholds";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "multi-user.target" ];
-    serviceConfig.Type = "oneshot";
+  systemd.services = {
+    battery-charge-thresholds = {
+      description = "Set battery charge thresholds";
+      wantedBy = [ "multi-user.target" ];
+      after = [ "multi-user.target" ];
+      serviceConfig.Type = "oneshot";
 
-    script = ''
-      echo 75 > /sys/class/power_supply/BATT/charge_control_start_threshold
-      echo 85 > /sys/class/power_supply/BATT/charge_control_end_threshold
-    '';
+      script = ''
+      echo 100 > /sys/class/power_supply/BATT/charge_control_start_threshold
+      echo 100 > /sys/class/power_supply/BATT/charge_control_end_threshold
+      '';
+    };
+    openconnect-vpn = {
+      description = "Manual OpenConnect VPN (wl-paste)";
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
+      wantedBy = [ ]; # empty = doesn't start automatically
+      serviceConfig = {
+        Type = "simple";
+        Environment = [
+          "XDG_RUNTIME_DIR=/run/user/1000"
+          "WAYLAND_DISPLAY=wayland-1"
+        ];
+        ExecStart = ''
+          ${pkgs.bash}/bin/bash -c '${pkgs.wl-clipboard}/bin/wl-paste | ${pkgs.openconnect}/bin/openconnect --user=uusl33 --passwd-on-stdin vpn.thm.de'
+        '';
+        Restart = "no";
+      };
+    };
   };
 
   programs = {
