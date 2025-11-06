@@ -64,6 +64,8 @@
     ghostty
     sioyek
     tectonic-unwrapped
+    grim
+    slurp
 
     # thm vpn
     openconnect
