@@ -23,6 +23,11 @@ use = "yazi-rs/plugins:toggle-pane"
 rev = "63f9650"
 hash = "d5d4f3527592da5fbe77fd6f51815f80"
 
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "0742fff"
+hash = "2bd799b42b8e42b8ef100310be71f8d1"
+
 [[flavor.deps]]
 use = "BennyOe/tokyo-night"
 rev = "b3950bf"

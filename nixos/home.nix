@@ -33,6 +33,7 @@
     dust
     cloc
     jq
+    ouch
 
     rclone
     lazygit
