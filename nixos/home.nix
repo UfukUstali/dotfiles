@@ -66,6 +66,7 @@
     sioyek
     tectonic-unwrapped
     grim
+    wf-recorder
     slurp
 
     # thm vpn

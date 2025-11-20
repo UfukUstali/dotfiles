@@ -69,3 +69,13 @@ function _fnm_autoload_hook --on-variable PWD --description 'Change Node version
 end
 
 # set -gx XDG_DATA_DIRS $XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share
+
+function rec --description 'Record screen'
+    set name (date +%Y-%m-%d_%H-%M-%S)
+    if test (count $argv) -gt 0
+        set name $argv[1]
+    end
+    set path $HOME/Media/Recordings/$name.mp4
+    mkdir -p (dirname $path)
+    wf-recorder -g (slurp -d) --file=$path
+end
