@@ -65,9 +65,11 @@
     ghostty
     sioyek
     tectonic-unwrapped
+    ghidra
     grim
     wf-recorder
     slurp
+    zoom-us
 
     # thm vpn
     openconnect
@@ -96,6 +98,7 @@
         readr readxl dplyr ggplot2
       ];
     })
+    jdk
 
     # soon(TM)
     # scrcpy

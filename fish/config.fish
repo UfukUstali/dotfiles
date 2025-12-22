@@ -79,3 +79,7 @@ function rec --description 'Record screen'
     mkdir -p (dirname $path)
     wf-recorder -g (slurp -d) --file=$path
 end
+
+
+set -x JAVA_HOME "/nix/store/hm028d05qs6138ggq02239sh6qf5xwd6-openjdk-21.0.8+9/lib/openjdk"
+
