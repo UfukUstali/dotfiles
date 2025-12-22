@@ -102,7 +102,7 @@
       ufuk = {
         isNormalUser = true;
         description = "Ufuk Ustali";
-        extraGroups = [ "networkmanager" "wheel" "ydotool" "i2c" "uinput" "docker" "libvirtd" "wireshark" ];
+        extraGroups = [ "networkmanager" "wheel" "ydotool" "i2c" "uinput" "docker" "libvirtd" "wireshark" "adbusers" ];
         packages = with pkgs; [ ];
         shell = pkgs.fish;
       };
@@ -140,6 +140,7 @@
     virt-manager
     wireshark
     dnsmasq
+    android-tools
   ];
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -343,6 +344,7 @@
   programs = {
     ydotool.enable = true;
     fish.enable = true;
+    adb.enable = true;
     wireshark = {
       enable = true;
       usbmon.enable = true;
