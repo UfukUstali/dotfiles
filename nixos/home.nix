@@ -43,6 +43,7 @@
     bluetui
     calcure
     impala
+    sysz
 
     yazi
     ripdrag
@@ -99,6 +100,7 @@
       ];
     })
     jdk
+    just
 
     # soon(TM)
     # scrcpy
