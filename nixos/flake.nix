@@ -10,6 +10,7 @@
     };
 
     google-chrome.url = "github:nixos/nixpkgs/nixos-unstable";
+    ollama.url = "github:nixos/nixpkgs/nixos-unstable";
 
     hyprland.url = "github:hyprwm/Hyprland";
     hy3 = {
@@ -17,20 +18,21 @@
       inputs.hyprland.follows = "hyprland";
     };
     hypr-dynamic-cursors = {
-        url = "github:VirtCode/hypr-dynamic-cursors";
+        url = "github:UfukUstali/hypr-dynamic-cursors";
         inputs.hyprland.follows = "hyprland";
     };
   };
 
-  outputs = { self, nixpkgs, hyprland, hy3, hypr-dynamic-cursors, google-chrome, ... }@inputs:
+  outputs = { self, nixpkgs, hyprland, hy3, hypr-dynamic-cursors, google-chrome, ollama, ... }@inputs:
     let
       system = "x86_64-linux";
       chromePkgs = import google-chrome { inherit system; config.allowUnfree = true; };
+      ollamaPkgs = import ollama { inherit system; config.allowUnfree = true; };
     in {
       nixosConfigurations = {
-        ufuk-laptop = nixpkgs.lib.nixosSystem {
+        ufuk-desktop = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs system chromePkgs;
+            inherit inputs system chromePkgs ollamaPkgs;
             hyprlandPkgs = hyprland.packages.${system};
           };
           modules = [
@@ -40,7 +42,7 @@
             {
               home-manager = {
                 extraSpecialArgs = {
-                  inherit inputs system chromePkgs;
+                  inherit inputs system chromePkgs ollamaPkgs;
                   hyprlandPkgs = hyprland.packages.${system};
                   hy3Pkgs = hy3.packages.${system};
                   hyprDyCursorsPkgs = hypr-dynamic-cursors.packages.${system};

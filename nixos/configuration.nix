@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, hyprlandPkgs, inputs, ... }:
+{ config, pkgs, hyprlandPkgs, ollamaPkgs, inputs, ... }:
 
 {
   imports =
@@ -20,6 +20,7 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 1;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelModules = [ "i2c-dev" ];
 
@@ -31,15 +32,12 @@
   virtualisation = {
     # waydroid.enable = true;
     docker.enable = true;
-    libvirtd = {
-      enable = true;
-      qemu.ovmf.enable = true;
-    };
+    libvirtd.enable = true;
   };
 
   # Enable networking
   networking = {
-    hostName = "ufuk-laptop"; # Define your hostname.
+    hostName = "ufuk-desktop"; # Define your hostname.
     wireless.iwd = {
       enable = true;
       settings = {
@@ -48,9 +46,6 @@
         };
         IPv6 = {
           Enabled = true;
-        };
-        Scan = {
-          DisablePeriodicScan = true;
         };
         Settings = {
           AutoConnect = true;
@@ -141,6 +136,12 @@
     wireshark
     dnsmasq
     android-tools
+    (llama-cpp.override {
+      rocmSupport = true;
+      rocmGpuTargets = [ "gfx1030" ];
+    })
+    # ollamaPkgs.ollama-rocm
+    ollama-rocm
   ];
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -251,8 +252,8 @@
       settings = {
         global = {
           "workgroup" = "WORKGROUP";
-          "server string" = "ufuk-laptop";
-          "netbios name" = "ufuk-laptop";
+          "server string" = "ufuk-desktop";
+          "netbios name" = "ufuk-desktop";
           "security" = "user";
           "server signing" = "mandatory";
           "client signing" = "mandatory";
@@ -309,19 +310,7 @@
     flatpak.enable = true;
   };
 
-  # custom service to set battery thresholds
   systemd.services = {
-    battery-charge-thresholds = {
-      description = "Set battery charge thresholds";
-      wantedBy = [ "multi-user.target" ];
-      after = [ "multi-user.target" ];
-      serviceConfig.Type = "oneshot";
-
-      script = ''
-      echo 100 > /sys/class/power_supply/BATT/charge_control_start_threshold
-      echo 100 > /sys/class/power_supply/BATT/charge_control_end_threshold
-      '';
-    };
     openconnect-vpn = {
       description = "Manual OpenConnect VPN (wl-paste)";
       after = [ "network-online.target" ];
