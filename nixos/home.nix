@@ -60,7 +60,6 @@
     anydesk
     playerctl
     libreoffice-qt6-fresh
-    weylus
     minio-client
     traceroute
     ghostty

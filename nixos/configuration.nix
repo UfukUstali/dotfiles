@@ -21,7 +21,6 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelModules = [ "i2c-dev" ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -145,6 +144,7 @@
   environment.variables = {
   };
   hardware = {
+    i2c.enable = true;
     graphics.enable = true;
     bluetooth = {
       enable = true;
@@ -194,15 +194,6 @@
         };
       };
     };
-
-    # 1-2 for ddcutil
-    # 3 for weylus
-    udev.extraRules = ''
-      SUBSYSTEM=="i2c-dev", KERNEL=="i2c-[0-9]*", ATTRS{class}=="0x030000", TAG+="uaccess"
-      SUBSYSTEM=="dri", KERNEL=="card[0-9]*", TAG+="uaccess"
-
-      KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
-    '';
 
     unbound = {
       enable = true;
