@@ -70,6 +70,7 @@
     grim
     wf-recorder
     slurp
+    satty
     zoom-us
 
     # thm vpn
