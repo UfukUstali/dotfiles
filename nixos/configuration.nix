@@ -31,10 +31,7 @@
   virtualisation = {
     # waydroid.enable = true;
     docker.enable = true;
-    libvirtd = {
-      enable = true;
-      qemu.ovmf.enable = true;
-    };
+    libvirtd.enable = true;
   };
 
   # Enable networking
@@ -102,7 +99,7 @@
       ufuk = {
         isNormalUser = true;
         description = "Ufuk Ustali";
-        extraGroups = [ "networkmanager" "wheel" "ydotool" "i2c" "uinput" "docker" "libvirtd" "wireshark" "adbusers" ];
+        extraGroups = [ "networkmanager" "wheel" "ydotool" "i2c" "uinput" "docker" "libvirtd" "wireshark" ];
         packages = with pkgs; [ ];
         shell = pkgs.fish;
       };
@@ -344,7 +341,6 @@
   programs = {
     ydotool.enable = true;
     fish.enable = true;
-    adb.enable = true;
     wireshark = {
       enable = true;
       usbmon.enable = true;
@@ -375,4 +371,11 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
+  system.autoUpgrade = {
+    enable = true;
+    dates = "daily";
+    randomizedDelaySec = "1h";
+    operation = "switch";
+    flake = "/home/ufuk/.config/nixos/";
+  };
 }

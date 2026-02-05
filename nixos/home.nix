@@ -1,4 +1,4 @@
-{ lib, config, pkgs, hyprlandPkgs, chromePkgs, ... }:
+{ lib, config, pkgs, hyprlandPkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -53,7 +53,7 @@
 
     # common apps/utils
     legcord
-    chromePkgs.google-chrome
+    google-chrome
     vscode
     unzip
     remmina
@@ -157,18 +157,34 @@
     };
     git = {
       enable = true;
-      userName = "Ufuk Ustali";
-      userEmail = "ustaliufuk73@gmail.com";
-      aliases = {
-        graph = "log --oneline --graph";
-        undo = "!f() { git reset HEAD~\${1:-1}; }; f";
-      };
-      extraConfig = {
+      settings = {
+        user = {
+          name = "Ufuk Ustali";
+          email = "ustaliufuk73@gmail.com";
+        };
+
+        alias = {
+          graph = "log --oneline --graph";
+          undo = "!f() { git reset HEAD~\${1:-1}; }; f";
+        };
+
         pull.rebase = true;
         rerere.enabled = true;
-        rebase."updateRefs" = true;
+        rebase.updateRefs = true;
         init.defaultBranch = "master";
       };
+      # settings = {
+      #   userName = "Ufuk Ustali";
+      #   userEmail = "ustaliufuk73@gmail.com";
+      #   aliases = {
+      #     graph = "log --oneline --graph";
+      #     undo = "!f() { git reset HEAD~\${1:-1}; }; f";
+      #   };
+      #   pull.rebase = true;
+      #   rerere.enabled = true;
+      #   rebase."updateRefs" = true;
+      #   init.defaultBranch = "master";
+      # };
     };
   };
 
@@ -190,7 +206,7 @@
         };
 
         Service = {
-          ExecStart = ''${chromePkgs.google-chrome}/bin/google-chrome-stable --enable-features=TouchpadOverscrollHistoryNavigation'';
+          ExecStart = ''${pkgs.google-chrome}/bin/google-chrome-stable --enable-features=TouchpadOverscrollHistoryNavigation'';
           Restart = "on-failure";
           Slice = "session.slice";
         };
