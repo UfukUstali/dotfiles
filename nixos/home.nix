@@ -100,6 +100,7 @@
       ];
     })
     jdk
+    python3
     just
 
     # soon(TM)
