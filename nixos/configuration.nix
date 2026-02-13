@@ -332,6 +332,14 @@
   programs = {
     ydotool.enable = true;
     fish.enable = true;
+    git = {
+      enable = true;
+      config = {
+        safe.directory = [
+          "/home/ufuk/projects/personal/dotfiles"
+        ];
+      };
+    };
     wireshark = {
       enable = true;
       usbmon.enable = true;
