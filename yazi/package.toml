@@ -1,11 +1,11 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "230b9c6"
+rev = "88990a6"
 hash = "270915fa8282a19908449530ff66f7e2"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:jump-to-char"
-rev = "230b9c6"
+rev = "88990a6"
 hash = "ce67445ebb1bf3d97b8e44f50904b2c5"
 
 [[plugin.deps]]
@@ -15,12 +15,12 @@ hash = "5c2f068b10813be3ce75ce344ec48246"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
-rev = "230b9c6"
+rev = "88990a6"
 hash = "8da0b15a97b5dfd13941d1ecc617ac7c"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "230b9c6"
+rev = "88990a6"
 hash = "8a7c58225816a163a6e8730c0adafbc8"
 
 [[plugin.deps]]
@@ -30,5 +30,5 @@ hash = "c9e628fc0312d198db22ae2fa74883b"
 
 [[flavor.deps]]
 use = "BennyOe/tokyo-night"
-rev = "b3950bf"
-hash = "319ce574cdb2865baf4323db90456504"
+rev = "8e6296f"
+hash = "d9da921c3bd37ba32ee27a8a7a40461f"
