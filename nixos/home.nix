@@ -44,6 +44,7 @@
     calcure
     impala
     sysz
+    mprocs
 
     yazi
     ripdrag
