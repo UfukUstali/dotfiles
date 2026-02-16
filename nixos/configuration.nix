@@ -58,7 +58,7 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [ 33611 3000 ];
-      trustedInterfaces = [ "virbr0" ];
+      trustedInterfaces = [ "virbr0" "docker0" "docker_gwbridge" "br-*" ];
     };
   };
 
