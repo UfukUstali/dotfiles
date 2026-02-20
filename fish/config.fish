@@ -3,6 +3,7 @@ if status is-interactive
   fish_default_key_bindings
 end
 
+set -gx HYPR_WINDOW_ADDRESS (hyprctl activewindow -j | jq -r '.address')
 bind \b backward-kill-word
 bind \e\[3\;5~ kill-word
 
@@ -49,7 +50,7 @@ alias ts="tailscale"
 #set -x NIX_LD (nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD ')
 set -x EDITOR nvim
 #set -gx PATH "/home/ufuk/.local/share/nvim/mason/bin" $PATH
-set -gx PATH "/home/ufuk/projects/personal/schemadiff/bin" $PATH
+set -gx PATH "/home/ufuk/go/bin" $PATH
 
 # pnpm
 set -gx PNPM_HOME "/home/ufuk/.local/share/pnpm"
@@ -80,6 +81,13 @@ function rec --description 'Record screen'
     wf-recorder -g (slurp -d) --file=$path
 end
 
+function codediff --description 'Open nvim CodeDiff (default: HEAD~1 HEAD)'
+    set -l arg (string join ' ' $argv)
+    if test -z "$arg"
+        set arg 'HEAD~1 HEAD'
+    end
+    nvim +"CodeDiff $arg"
+end
 
 set -x JAVA_HOME "/nix/store/hm028d05qs6138ggq02239sh6qf5xwd6-openjdk-21.0.8+9/lib/openjdk"
 
