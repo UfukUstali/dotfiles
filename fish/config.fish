@@ -51,6 +51,7 @@ alias ts="tailscale"
 set -x EDITOR nvim
 #set -gx PATH "/home/ufuk/.local/share/nvim/mason/bin" $PATH
 set -gx PATH "/home/ufuk/go/bin" $PATH
+set -gx PATH "/home/ufuk/.cargo/bin" $PATH
 
 # pnpm
 set -gx PNPM_HOME "/home/ufuk/.local/share/pnpm"
