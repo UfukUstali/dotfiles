@@ -376,5 +376,6 @@
     randomizedDelaySec = "1h";
     operation = "switch";
     flake = "/home/ufuk/.config/nixos/";
+    flags = [ "--update-input" "nixpkgs" ];
   };
 }
