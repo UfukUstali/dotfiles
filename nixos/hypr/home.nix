@@ -1,18 +1,4 @@
-{ lib, pkgs, hyprlandPkgs, hy3Pkgs, hyprDyCursorsPkgs, ...}: {
-
-  wayland.windowManager.hyprland = {
-    enable = true;
-    package = hyprlandPkgs.hyprland;
-    systemd.enable = false;
-    settings = {};
-    plugins = [
-      hy3Pkgs.hy3
-      hyprDyCursorsPkgs.hypr-dynamic-cursors
-    ];
-    extraConfig = ''
-      source = ./main-uwsm.conf
-    '';
-  };
+{ lib, pkgs, ...}: {
 
   home.packages = with pkgs; [
     hyprpicker

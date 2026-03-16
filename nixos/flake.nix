@@ -8,19 +8,9 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprland.url = "github:hyprwm/Hyprland";
-    hy3 = {
-      url = "github:outfoxxed/hy3";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hypr-dynamic-cursors = {
-        url = "github:VirtCode/hypr-dynamic-cursors";
-        inputs.hyprland.follows = "hyprland";
-    };
   };
 
-  outputs = { self, nixpkgs, hyprland, hy3, hypr-dynamic-cursors, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
     in {
@@ -28,7 +18,6 @@
         ufuk-laptop = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs system;
-            hyprlandPkgs = hyprland.packages.${system};
           };
           modules = [
             ./configuration.nix
@@ -38,9 +27,6 @@
               home-manager = {
                 extraSpecialArgs = {
                   inherit inputs system;
-                  hyprlandPkgs = hyprland.packages.${system};
-                  hy3Pkgs = hy3.packages.${system};
-                  hyprDyCursorsPkgs = hypr-dynamic-cursors.packages.${system};
                 };
                 users.ufuk = {
                   imports = [

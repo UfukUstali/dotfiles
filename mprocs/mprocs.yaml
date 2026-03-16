@@ -1,0 +1,5 @@
+keymap_term:
+  <Esc>: {c: focus-procs}
+
+keymap_procs:
+  <Enter>: {c: focus-term}

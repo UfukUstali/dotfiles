@@ -1,15 +1,10 @@
-{ pkgs, hyprlandPkgs, ...}: {
-
+{ inputs, pkgs, ...}: {
   programs = {
     hyprland = {
       enable = true;
       withUWSM = true;
-      package = hyprlandPkgs.hyprland;
-      portalPackage = hyprlandPkgs.xdg-desktop-portal-hyprland;
     };
-    hyprlock = {
-      enable = true;
-    };
+    hyprlock.enable = true;
   };
 
   services = {
