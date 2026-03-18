@@ -345,9 +345,7 @@
     };
     nix-ld = {
       enable = true;
-      libraries = with pkgs; [
-        fnm
-      ];
+      libraries = with pkgs; [];
     };
   };
 
