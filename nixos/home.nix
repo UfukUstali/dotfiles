@@ -85,7 +85,6 @@
     # languages
     gcc
     pnpm
-    fnm
     go
     rustc
     cargo
