@@ -45,6 +45,7 @@
     impala
     sysz
     mprocs
+    wiremix
 
     yazi
     ripdrag
