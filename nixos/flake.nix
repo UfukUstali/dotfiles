@@ -8,9 +8,10 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, hyprland, ... }@inputs:
     let
       system = "x86_64-linux";
     in {
@@ -18,6 +19,7 @@
         ufuk-laptop = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs system;
+            hyprlandPkgs = hyprland.packages.${system};
           };
           modules = [
             ./configuration.nix

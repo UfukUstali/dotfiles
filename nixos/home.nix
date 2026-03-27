@@ -174,18 +174,6 @@
         rebase.updateRefs = true;
         init.defaultBranch = "master";
       };
-      # settings = {
-      #   userName = "Ufuk Ustali";
-      #   userEmail = "ustaliufuk73@gmail.com";
-      #   aliases = {
-      #     graph = "log --oneline --graph";
-      #     undo = "!f() { git reset HEAD~\${1:-1}; }; f";
-      #   };
-      #   pull.rebase = true;
-      #   rerere.enabled = true;
-      #   rebase."updateRefs" = true;
-      #   init.defaultBranch = "master";
-      # };
     };
   };
 
