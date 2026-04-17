@@ -33,7 +33,7 @@ end
 
 function cl
   set -q argv[1]; or set argv[1] "."
-  cloc --vcs=git --include-ext=c,cats,ec,idc,pgc,C,c++,c++m,cc,ccm,CPP,cpp,cppm,cxx,cxxm,h++,inl,ipp,ixx,pcc,tcc,tpp,H,h,hh,hpp,hxx,css,fish,go,ʕ◔ϖ◔ʔ,java,_js,bones,cjs,es6,jake,jakefile,js,jsb,jscad,jsfl,jsm,jss,mjs,njs,pac,sjs,ssjs,xsjs,xsjslib,lua,nse,p8,pd_lua,rbxs,wlua,nix,eliom,eliomi,ml,ml4,mli,mll,mly,odin,buck,build.bazel,gclient,gyp,gypi,lmi,py,py3,pyde,pyi,pyp,pyt,pyw,sconscript,sconstruct,snakefile,tac,workspace,wscript,wsgi,xpy,rs,rs.in,cql,mysql,psql,SQL,sql,tab,udf,viw,svelte,swift,mts,tsx,ts,vim,vue,zig,zsh $argv[1]
+  cloc --vcs=git --include-ext=c,cats,ec,idc,pgc,C,c++,c++m,cc,ccm,CPP,cpp,cppm,cxx,cxxm,h++,inl,ipp,ixx,kt,ktm,kts,pcc,tcc,tpp,H,h,hh,hpp,hxx,css,fish,go,ʕ◔ϖ◔ʔ,java,_js,bones,cjs,es6,jake,jakefile,js,jsb,jscad,jsfl,jsm,jss,mjs,njs,pac,sjs,ssjs,xsjs,xsjslib,lua,nse,p8,pd_lua,rbxs,wlua,nix,eliom,eliomi,ml,ml4,mli,mll,mly,odin,buck,build.bazel,gclient,gyp,gypi,lmi,py,py3,pyde,pyi,pyp,pyt,pyw,sconscript,sconstruct,snakefile,tac,workspace,wscript,wsgi,xpy,rs,rs.in,cql,mysql,psql,SQL,sql,tab,udf,viw,svelte,swift,mts,tsx,ts,vim,vue,zig,zsh $argv[1]
 end
 
 function pd
@@ -61,14 +61,6 @@ end
 # pnpm end
 
 zoxide init --cmd cd fish | source
-
-fnm env --shell fish | source
-function _fnm_autoload_hook --on-variable PWD --description 'Change Node version on directory change'
-    status --is-command-substitution; and return
-    if test -f .node-version -o -f .nvmrc -o -f package.json
-        fnm use --silent-if-unchanged
-    end
-end
 
 # set -gx XDG_DATA_DIRS $XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share
 
