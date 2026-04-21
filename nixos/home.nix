@@ -101,6 +101,7 @@
       ];
     })
     jdk
+    maven
     python3
     just
 
