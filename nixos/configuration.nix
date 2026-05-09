@@ -350,6 +350,10 @@
       enable = true;
       libraries = with pkgs; [];
     };
+    ausweisapp = {
+      enable = true;
+      openFirewall = true;
+    };
   };
 
   environment.etc."dconf/db/local.d/00-settings".text = ''
