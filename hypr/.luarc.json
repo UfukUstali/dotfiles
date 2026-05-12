@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  "workspace": {
+    "library": [
+      "/nix/store/f2hw4vp020z6b41phl9fkghwg08syzs1-hyprland-0.55.0+date=2026-05-09_af923e3/share/hypr/stubs"
+    ]
+  },
+  "diagnostics": {
+    "globals": ["hl"]
+  }
+}
