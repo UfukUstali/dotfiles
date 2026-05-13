@@ -57,12 +57,15 @@ local terminal = "ghostty"
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
+---  NOTE: when using uwsm ----
+--- do not use hyprland to ----
+--- set env vars           ----
 -------------------------------
 
-hl.env("XCURSOR_THEME", "Nordzy-cursors")
-hl.env("HYPRCURSOR_THEME", "Nordzy-cursors")
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
+-- hl.env("XCURSOR_THEME", "Nordzy-cursors")
+-- hl.env("HYPRCURSOR_THEME", "Nordzy-cursors")
+-- hl.env("XCURSOR_SIZE", "24")
+-- hl.env("HYPRCURSOR_SIZE", "24")
 
 -----------------------
 ---- LOOK AND FEEL ----
