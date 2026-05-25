@@ -54,7 +54,6 @@
     rquickshare
 
     # common apps/utils
-    legcord
     google-chrome
     vscode
     unzip
