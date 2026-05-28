@@ -9,11 +9,6 @@ rev = "88990a6"
 hash = "ce67445ebb1bf3d97b8e44f50904b2c5"
 
 [[plugin.deps]]
-use = "boydaihungst/simple-mtpfs"
-rev = "e2a6f2f"
-hash = "5c2f068b10813be3ce75ce344ec48246"
-
-[[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
 rev = "88990a6"
 hash = "8da0b15a97b5dfd13941d1ecc617ac7c"

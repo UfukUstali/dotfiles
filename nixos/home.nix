@@ -60,7 +60,7 @@
     remmina
     anydesk
     playerctl
-    libreoffice-qt6-fresh
+    onlyoffice-desktopeditors
     minio-client
     traceroute
     ghostty
@@ -72,6 +72,7 @@
     slurp
     satty
     zoom-us
+    t3code
 
     # thm vpn
     openconnect
