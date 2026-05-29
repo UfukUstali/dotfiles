@@ -9,9 +9,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland/v0.55.0";
+
+    caelestia-shell = {
+      url = "github:UfukUstali/caelestia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, hyprland, caelestia-shell, ... }@inputs:
     let
       system = "x86_64-linux";
     in {
@@ -34,6 +39,7 @@
                   imports = [
                     ./home.nix
                     ./hypr/home.nix
+                    caelestia-shell.homeManagerModules.default
                   ];
                 };
                 backupFileExtension = "backup";

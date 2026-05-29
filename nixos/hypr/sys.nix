@@ -6,7 +6,6 @@
       package = hyprlandPkgs.hyprland;
       portalPackage = hyprlandPkgs.xdg-desktop-portal-hyprland;
     };
-    hyprlock.enable = true;
   };
 
   services = {

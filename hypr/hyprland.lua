@@ -3,7 +3,7 @@
 -------------------
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd("uwsm app -- hyprlock --immediate-render || hyprctl dispatch exit")
+	hl.dispatch(hl.dsp.global("caelestia:lock"))
 end)
 
 local c = require("hyprcolors")
@@ -246,20 +246,18 @@ local bind = {
 
 bind.m("return", launch(terminal .. " +new-window"))
 bind.m("w", hl.dsp.window.close())
-bind.m("M", launch("loginctl lock-session"))
-bind.m("ALT + M", launch("wlogout"))
+bind.m("M", hl.dsp.global("caelestia:lock"))
+bind.m("ALT + M", hl.dsp.global("caelestia:session"))
 
 bind.m("E", launch(terminal .. " --class=foo.yazi -e yazi"))
 
 bind.m("ALT + V", hl.dsp.window.float({ action = "toggle" }))
 
-bind.m("SPACE", launch("wofi --show drun"))
+bind.m("SPACE", hl.dsp.global("caelestia:launcher"))
 
 bind.m("V", launch(terminal .. " --class=foo.clipse -e clipse"))
 
-bind.m("n", launch("swaync-client -t -sw"))
-
-bind.m("b", launch("pkill -SIGUSR1 waybar"))
+bind.m("n", hl.dsp.global("caelestia:sidebar"))
 
 bind.m("SHIFT + c", launch("hyprpicker -a -f hex"))
 
@@ -284,6 +282,7 @@ local workspaceKeymap = {
 	{ "1", "2", "3", "4", "5",     "6", "7", "8", "9", "0" },
 	{  10,  6,   2,   4,   8,       7,   3,   1,   5,   9 },
 }
+
 for i = 1, 10 do
 	local key = workspaceKeymap[1][i]
 	local ws = workspaceKeymap[2][i]
@@ -315,10 +314,10 @@ hl.bind(
 hl.bind("XF86AudioMute", launch("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
 hl.bind("XF86AudioMicMute", launch("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true })
 
-bind.m("XF86AudioRaiseVolume", launch({ "brightnessctl s 75%", "ddcutil setvcp 10 80" }), { locked = true })
-bind.m("XF86AudioLowerVolume", launch({ "brightnessctl s 15%", "ddcutil setvcp 10 0" }), { locked = true })
-hl.bind("XF86MonBrightnessUp", launch({ "brightnessctl s 75%", "ddcutil setvcp 10 80" }), { locked = true })
-hl.bind("XF86MonBrightnessDown", launch({ "brightnessctl s 15%", "ddcutil setvcp 10 0" }), { locked = true })
+bind.m("XF86AudioRaiseVolume", hl.dsp.global("caelestia:brightnessUp"), { locked = true, repeating = true })
+bind.m("XF86AudioLowerVolume", hl.dsp.global("caelestia:brightnessDown"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.global("caelestia:brightnessUp"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.global("caelestia:brightnessDown"), { locked = true, repeating = true })
 
 hl.bind("XF86AudioNext", launch("playerctl next"), { locked = true })
 hl.bind("XF86AudioPause", launch("playerctl play-pause"), { locked = true })

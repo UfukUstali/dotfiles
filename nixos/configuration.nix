@@ -37,22 +37,9 @@
   # Enable networking
   networking = {
     hostName = "ufuk-laptop"; # Define your hostname.
-    wireless.iwd = {
+    networkmanager = {
       enable = true;
-      settings = {
-        General = {
-          EnableNetworkConfiguration = true;
-        };
-        IPv6 = {
-          Enabled = true;
-        };
-        Scan = {
-          DisablePeriodicScan = true;
-        };
-        Settings = {
-          AutoConnect = true;
-        };
-      };
+      dns = "none";
     };
     nameservers = [ "127.0.0.1" ];
     nftables.enable = true;
