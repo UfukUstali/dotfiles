@@ -258,6 +258,7 @@ bind.m("SPACE", hl.dsp.global("caelestia:launcher"))
 bind.m("V", launch(terminal .. " --class=foo.clipse -e clipse"))
 
 bind.m("n", hl.dsp.global("caelestia:sidebar"))
+bind.m("b", hl.dsp.global("caelestia:dashboard"))
 
 bind.m("SHIFT + c", launch("hyprpicker -a -f hex"))
 
