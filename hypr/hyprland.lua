@@ -2,10 +2,6 @@
 ---- AUTOSTART ----
 -------------------
 
-hl.on("hyprland.start", function()
-	hl.dispatch(hl.dsp.global("caelestia:lock"))
-end)
-
 local c = require("hyprcolors")
 
 ------------------
@@ -89,7 +85,7 @@ hl.config({
 	},
 
 	decoration = {
-		rounding = 10,
+		rounding = 20,
 		active_opacity = 1,
 		inactive_opacity = 0.98,
 		fullscreen_opacity = 1,
