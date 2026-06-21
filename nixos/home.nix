@@ -79,6 +79,8 @@
     hw-probe
     go-passbolt-cli
     railway
+    claude-code
+    turbo
 
     # languages
     gcc
