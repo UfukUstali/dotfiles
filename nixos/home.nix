@@ -155,6 +155,9 @@
     caelestia = {
       enable = true;
       settings = {
+        services = {
+          weatherLocation = "giessen";
+        };
         general = {
           idle = {
             timeouts = [
