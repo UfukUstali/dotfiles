@@ -11,6 +11,7 @@
     ../../modules/roles/server.nix
 
     ../../modules/services/tailscale.nix
+    ../../modules/services/docker.nix
   ];
 
   networking.hostName = "nar-eksisi";
