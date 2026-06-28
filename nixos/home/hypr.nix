@@ -1,5 +1,7 @@
-{ lib, pkgs, ...}: {
+# Hyprland user session: helpers, polkit agent and clipboard manager.
+{ lib, pkgs, ... }:
 
+{
   home.packages = with pkgs; [
     hyprpicker
     hyprcursor
@@ -26,9 +28,7 @@
           Restart = "on-failure";
         };
 
-        Install = {
-          WantedBy = [ "graphical-session.target" ];
-        };
+        Install.WantedBy = [ "graphical-session.target" ];
       };
 
       clipse = lib.mkForce {
@@ -45,9 +45,7 @@
           ExecStart = "${pkgs.clipse}/bin/clipse -listen";
         };
 
-        Install = {
-          WantedBy = [ "graphical-session.target" ];
-        };
+        Install.WantedBy = [ "graphical-session.target" ];
       };
     };
   };
