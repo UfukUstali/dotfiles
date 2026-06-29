@@ -40,6 +40,7 @@
     cmake
     openssl
     usbutils
+    unzip
 
     # better utils
     eza

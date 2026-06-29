@@ -41,8 +41,6 @@
     ghidra
 
     # languages
-    gcc
-    go
     rustc
     cargo
     bun
