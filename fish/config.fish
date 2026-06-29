@@ -3,7 +3,10 @@ if status is-interactive
   fish_default_key_bindings
 end
 
-set -gx HYPR_WINDOW_ADDRESS (hyprctl activewindow -j | jq -r '.address')
+if command -sq hyprctl; and command -sq jq
+    set -gx HYPR_WINDOW_ADDRESS (hyprctl activewindow -j | jq -r '.address')
+end
+
 bind \b backward-kill-word
 bind \e\[3\;5~ kill-word
 
