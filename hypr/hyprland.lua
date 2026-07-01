@@ -85,7 +85,7 @@ hl.config({
 	},
 
 	decoration = {
-		rounding = 20,
+		rounding = 23,
 		active_opacity = 1,
 		inactive_opacity = 0.98,
 		fullscreen_opacity = 1,
