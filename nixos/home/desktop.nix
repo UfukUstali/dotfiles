@@ -26,7 +26,6 @@
     satty
     zoom-us
     t3code
-    claude-code
 
     # thm vpn
     openconnect
