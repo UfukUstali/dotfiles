@@ -2,9 +2,23 @@
 # split-horizon zones. Hosts using this should set:
 #   networking.nameservers = [ "127.0.0.1" ];
 #   networking.networkmanager.dns = "none";
-{ ... }:
+{ pkgs, ... }:
 
 {
+  # After a suspend/resume the TLS upstream connections are dead and unbound
+  # has marked the upstreams unreachable in its infra cache (retried only after
+  # infra-host-ttl, 15m by default), so DNS stays broken well after the network
+  # is back. Restart unbound on resume to clear that stale state.
+  systemd.services.unbound-restart-on-resume = {
+    description = "Restart unbound after resume to clear stale upstream state";
+    after = [ "sleep.target" ];
+    wantedBy = [ "sleep.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.systemd}/bin/systemctl try-restart unbound.service";
+    };
+  };
+
   services.unbound = {
     enable = true;
     settings = {
