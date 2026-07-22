@@ -12,7 +12,6 @@
 
   home.packages = with pkgs; [
     go-passbolt-cli
-    turbo
 
     # languages
     gcc
