@@ -25,7 +25,6 @@
     slurp
     satty
     zoom-us
-    t3code
 
     # thm vpn
     openconnect
@@ -169,6 +168,25 @@
           ExecStart = "${pkgs.xdg-desktop-portal-termfilechooser}/libexec/xdg-desktop-portal-termfilechooser";
           Restart = "on-failure";
         };
+      };
+      # t3code vite-plus dev server, exposed via the devrp reverse proxy under
+      # the "code" subdomain on port 3773. Binaries are user-local (not nix), so
+      # they're referenced by absolute path; devrp execs t3 directly and t3 (vp)
+      # bundles its own node runtime, so no extra PATH wiring is needed.
+      t3code = {
+        Unit = {
+          Description = "t3code dev server (t3 behind devrp)";
+          PartOf = [ "graphical-session.target" ];
+          After = [ "graphical-session.target" ];
+        };
+        Service = {
+          WorkingDirectory = "/home/ufuk/projects/personal/t3code";
+          ExecStart = "/home/ufuk/go/bin/devrp -p 3773 -i code -- /home/ufuk/.vite-plus/bin/t3 --host 0.0.0.0 --no-browser";
+          Restart = "on-failure";
+          RestartSec = "5";
+          Slice = "session.slice";
+        };
+        Install.WantedBy = [ "graphical-session.target" ];
       };
     };
   };
