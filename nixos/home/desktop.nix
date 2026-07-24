@@ -145,10 +145,18 @@
           Description = "Google Chrome browser";
           Documentation = "https://www.google.com/chrome/";
           PartOf = [ "graphical-session.target" ];
-          After = [ "graphical-session.target" ];
+          # Order after the caelestia shell so Chrome doesn't race its
+          # notification server. caelestia.service is Type=exec, so systemd
+          # marks it active the moment the process execs — before it owns the
+          # org.freedesktop.Notifications name. The ExecStartPre below waits
+          # for the name to actually appear so Chrome sees a notification
+          # server and doesn't fall back to its built-in one.
+          After = [ "graphical-session.target" "caelestia.service" ];
+          Wants = [ "caelestia.service" ];
         };
 
         Service = {
+          ExecStartPre = "${pkgs.glib}/bin/gdbus wait --session --timeout 30 org.freedesktop.Notifications";
           ExecStart = ''${pkgs.google-chrome}/bin/google-chrome-stable --enable-features=TouchpadOverscrollHistoryNavigation'';
           Restart = "on-failure";
           Slice = "session.slice";
