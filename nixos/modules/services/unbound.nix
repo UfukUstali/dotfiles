@@ -5,19 +5,24 @@
 { pkgs, ... }:
 
 {
-  # After a suspend/resume the TLS upstream connections are dead and unbound
-  # has marked the upstreams unreachable in its infra cache (retried only after
-  # infra-host-ttl, 15m by default), so DNS stays broken well after the network
-  # is back. Restart unbound on resume to clear that stale state.
-  systemd.services.unbound-restart-on-resume = {
-    description = "Restart unbound after resume to clear stale upstream state";
-    after = [ "sleep.target" ];
-    wantedBy = [ "sleep.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.systemd}/bin/systemctl try-restart unbound.service";
-    };
-  };
+  # On resume the network route isn't up yet, so restarting unbound at that
+  # moment just fails to reach the upstream (can't prime the DNSSEC trust
+  # anchor) and marks it down in the infra cache for infra-host-ttl. Restarting
+  # on the resume event is therefore a race. Instead, restart unbound when
+  # NetworkManager reports the connection is actually up, and keep infra-host-ttl
+  # short so unbound also recovers on its own if a restart is ever missed.
+  networking.networkmanager.dispatcherScripts = [
+    {
+      type = "basic";
+      source = pkgs.writeShellScript "unbound-restart-on-net-up" ''
+        case "$2" in
+          up | connectivity-change)
+            ${pkgs.systemd}/bin/systemctl try-restart unbound.service
+            ;;
+        esac
+      '';
+    }
+  ];
 
   services.unbound = {
     enable = true;
