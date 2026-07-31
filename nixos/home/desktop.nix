@@ -181,7 +181,7 @@
         };
         Service = {
           WorkingDirectory = "/home/ufuk/projects/personal/t3code";
-          ExecStart = "/home/ufuk/go/bin/devrp -p 3773 -i code -- /home/ufuk/.vite-plus/bin/t3 --host 0.0.0.0 --no-browser";
+          ExecStart = "/home/ufuk/go/bin/devrp -p 3773 -i code -- /home/ufuk/.vite-plus/bin/t3 --host 0.0.0.0 --no-browser --tailscale-serve";
           Restart = "on-failure";
           RestartSec = "5";
           Slice = "session.slice";

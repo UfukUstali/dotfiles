@@ -63,6 +63,8 @@ if not string match -q -- $PNPM_HOME $PATH
 end
 # pnpm end
 
+abbr -a vpr 'vp run --log labeled'
+
 zoxide init --cmd cd fish | source
 
 # set -gx XDG_DATA_DIRS $XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share
