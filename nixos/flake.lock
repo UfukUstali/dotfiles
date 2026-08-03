@@ -46,6 +46,26 @@
         "type": "github"
       }
     },
+    "corral": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785782437,
+        "narHash": "sha256-JVwPQbUG3JWATyEVz6LrlE9rg2W9Mm15jjWkIuiFFW8=",
+        "owner": "UfukUstali",
+        "repo": "corral",
+        "rev": "af4f7b83725eda7d207996f5c7bbeb23c154cdb7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "UfukUstali",
+        "repo": "corral",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -107,6 +127,7 @@
     "root": {
       "inputs": {
         "caelestia-shell": "caelestia-shell",
+        "corral": "corral",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }

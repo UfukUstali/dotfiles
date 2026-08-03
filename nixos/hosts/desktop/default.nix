@@ -11,6 +11,7 @@
     ../../modules/core
     ../../modules/boot/uefi.nix
     ../../modules/desktop
+    ../../modules/roles/dev.nix
 
     ../../modules/services/samba.nix
     ../../modules/services/tailscale.nix

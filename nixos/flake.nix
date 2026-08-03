@@ -13,6 +13,11 @@
       url = "github:UfukUstali/caelestia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    corral = {
+      url = "github:UfukUstali/corral";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, caelestia-shell, ... }@inputs:
