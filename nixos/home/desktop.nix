@@ -1,33 +1,6 @@
 # Graphical home configuration: GUI apps, dev toolchains, theming and user
 # services. Imported by workstation hosts only.
-{ inputs, system, pkgs, ... }:
-
-let
-  # nixpkgs still ships app2unit 1.4.2, whose man page nests inline formatting
-  # (`_${app_name}_`) — an error since scdoc 1.11.5, so the build fails. Upstream
-  # dropped the underscores in v1.4.4. Remove this once nixpkgs catches up.
-  app2unit = pkgs.app2unit.overrideAttrs (_: rec {
-    version = "1.4.4";
-    src = pkgs.fetchFromGitHub {
-      owner = "Vladimir-csp";
-      repo = "app2unit";
-      tag = "v${version}";
-      hash = "sha256-TIY+/9ekGub+10uyqXy5aYU+2NLysMtaQnD1PIjBCFA=";
-    };
-  });
-
-  # caelestia's flakes build their packages from their own nixpkgs instance, so a
-  # `nixpkgs.overlays` entry would never reach them — the fixed app2unit has to be
-  # threaded in by hand. Both take it as a runtime dep, and the shell embeds the
-  # cli, so all three overrides are needed.
-  caelestia-cli =
-    inputs.caelestia-shell.inputs.caelestia-cli.packages.${system}.default.override {
-      inherit app2unit;
-    };
-  caelestia-shell = inputs.caelestia-shell.packages.${system}.with-cli.override {
-    inherit app2unit caelestia-cli;
-  };
-in
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -81,7 +54,6 @@ in
 
   programs.caelestia = {
     enable = true;
-    package = caelestia-shell;
     settings = {
       services.weatherLocation = "giessen";
       general.idle.timeouts = [
@@ -146,10 +118,7 @@ in
         vimKeybinds = true;
       };
     };
-    cli = {
-      enable = true; # Also add caelestia-cli to path
-      package = caelestia-cli;
-    };
+    cli.enable = true; # Also add caelestia-cli to path
   };
 
   xdg.configFile."xdg-desktop-portal-termfilechooser/config".text = ''
