@@ -72,6 +72,7 @@
   };
 
   programs = {
+    kdeconnect.enable = true;
     wireshark = {
       enable = true;
       usbmon.enable = true;
