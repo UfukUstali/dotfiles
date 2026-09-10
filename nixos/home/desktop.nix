@@ -43,6 +43,7 @@
     bun
     texliveFull
     texpresso
+    typst
     jdk
     maven
     python3
