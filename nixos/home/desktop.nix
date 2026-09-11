@@ -66,12 +66,7 @@
         }
         {
           idleAction = "lock";
-          timeout = 1200;
-        }
-        {
-          idleAction = "hl.dsp.dpms({ action = \"off\" })";
-          returnAction = "hl.dsp.dpms({ action = \"on\" })";
-          timeout = 1260;
+          timeout = 600;
         }
       ];
       appearance = {
