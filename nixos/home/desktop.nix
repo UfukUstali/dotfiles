@@ -60,8 +60,8 @@
       general.idle.timeouts = [
         {
           idleAction = "hl.dsp.dpms({ action = \"off\" })";
-          onlyWhenLocked = true;
           returnAction = "hl.dsp.dpms({ action = \"on\" })";
+          onlyWhenLocked = true;
           timeout = 60;
         }
         {
