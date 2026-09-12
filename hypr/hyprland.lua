@@ -335,6 +335,7 @@ hl.window_rule({
 	name = "ripdrag-follow-cursor",
 	match = { class = "it\\.catboy\\.ripdrag" },
 	move = "(cursor_x-(window_w*0.5)) (cursor_y-(window_h*0.5))",
+	rounding = 10,
 })
 
 hl.window_rule({
