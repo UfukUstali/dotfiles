@@ -117,6 +117,7 @@ hl.config({
 	scrolling = {
 		focus_fit_method = 0,
 		follow_min_visible = 1,
+		wrap_swapcol = false,
 	},
 
 	misc = {
