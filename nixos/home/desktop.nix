@@ -66,7 +66,7 @@
         }
         {
           idleAction = "lock";
-          timeout = 600;
+          timeout = 900;
         }
       ];
       appearance = {
