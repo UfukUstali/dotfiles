@@ -12,7 +12,7 @@
 
     # common apps/utils
     google-chrome
-    vscode
+    gh
     remmina
     anydesk
     playerctl
