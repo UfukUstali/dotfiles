@@ -87,11 +87,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1786644736,
-        "narHash": "sha256-b7ZjSfXSJgpSAxI1yfiB7NXGtBbE2kyBApYIRrmKUrI=",
+        "lastModified": 1792177700,
+        "narHash": "sha256-Srk8mDR9WeTxToS2rzXeR+tvgbIpGCP8kxwpnmhLMzw=",
         "owner": "UfukUstali",
         "repo": "corral",
-        "rev": "babcb233ad332888f75c7c7759248a27e56fb309",
+        "rev": "9ab1784c3a61a174638c8eb40f2b3c8a260b3cba",
         "type": "github"
       },
       "original": {
