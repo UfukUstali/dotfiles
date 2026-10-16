@@ -1,5 +1,5 @@
 # Hyprland compositor + SDDM display manager.
-{ pkgs, ... }:
+{ inputs, pkgs, system, ... }:
 
 {
   # Use Hyprland's own binary cache to avoid rebuilds.
@@ -11,6 +11,8 @@
 
   programs.hyprland = {
     enable = true;
+    package = inputs.hyprland.packages.${system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
     withUWSM = true;
   };
 

@@ -1,32 +1,32 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "88990a6"
-hash = "270915fa8282a19908449530ff66f7e2"
+rev = "9166202"
+hash = "347cc6b190eb0c2fd60513cc7ae37412"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:jump-to-char"
-rev = "88990a6"
-hash = "ce67445ebb1bf3d97b8e44f50904b2c5"
+rev = "9166202"
+hash = "7a4b4237223aaa94e589d1c01a23542a"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
-rev = "88990a6"
-hash = "8da0b15a97b5dfd13941d1ecc617ac7c"
+rev = "9166202"
+hash = "87472b05a8c420100f6a2b9cde1e7746"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "88990a6"
-hash = "8a7c58225816a163a6e8730c0adafbc8"
+rev = "9166202"
+hash = "5b2fbef7d1513ce38ff72623a071a5e"
 
 [[plugin.deps]]
 use = "ndtoan96/ouch"
-rev = "594b8a2"
-hash = "c9e628fc0312d198db22ae2fa74883b"
+rev = "596b666"
+hash = "c2f4f4aca257dcceafa9e3b828dbf1c9"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "4ffa48f"
-hash = "77e20b071404f97c09d3f9afdb9482e0"
+rev = "9166202"
+hash = "b95f898e6dc60b52edbc415952e14395"
 
 [[flavor.deps]]
 use = "BennyOe/tokyo-night"

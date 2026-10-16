@@ -1,6 +1,6 @@
 # Graphical home configuration: GUI apps, dev toolchains, theming and user
 # services. Imported by workstation hosts only.
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -172,6 +172,7 @@
   gtk = {
     enable = true;
     theme.name = "Adwaita-dark";
+    gtk4.theme = config.gtk.theme;
     cursorTheme = {
       name = "Nordzy-cursors";
       size = 24;

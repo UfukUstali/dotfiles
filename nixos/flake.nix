@@ -2,15 +2,15 @@
   description = "Nixos config flake";
 
   inputs = {
-    # Pinned to the commit before `glaze: 7.9.1 -> 8.0.0`, which breaks
-    # hyprland 0.56.1: its CMake wants glaze 7.x, and on a major-version
-    # mismatch it falls back to fetching glaze over the network, which the
-    # build sandbox forbids. This rev still has app2unit 1.4.4 and a cached
-    # hyprland. Back to "nixos-unstable" once nixpkgs builds hyprland again.
-    nixpkgs.url = "github:nixos/nixpkgs/12d28633cf8e2899ac83315a7e5495fda119d193";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland/3633316a66fbe18c5c1297cdc60dde7e3b9c5844";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
