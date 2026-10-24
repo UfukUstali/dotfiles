@@ -71,7 +71,26 @@
     };
     nix-ld = {
       enable = true;
-      libraries = with pkgs; [ ];
+      libraries = with pkgs; [
+        # Shared libraries required by T3 Code's downloaded browser.
+        glib
+        nspr
+        nss
+        at-spi2-core
+        dbus
+        libx11
+        libxcomposite
+        libxdamage
+        libxext
+        libxfixes
+        libxrandr
+        libgbm
+        expat
+        libxcb
+        libxkbcommon
+        systemd
+        alsa-lib
+      ];
     };
   };
 
