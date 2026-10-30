@@ -30,6 +30,12 @@
     HandleLidSwitchExternalPower = "suspend";
   };
 
+  # Kernel 6.18.57+ in nixpkgs also builds and autoloads tiny_power_button, which
+  # turns the firmware's power-button wake event into an instant poweroff on
+  # resume from s2idle. Drop once nixpkgs stops building it.
+  # https://github.com/NixOS/nixpkgs/issues/577729
+  boot.blacklistedKernelModules = [ "tiny_power_button" ];
+
   services.power-profiles-daemon.enable = true;
 
   # German eID app.
