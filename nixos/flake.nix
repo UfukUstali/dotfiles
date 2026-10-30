@@ -9,11 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland/3633316a66fbe18c5c1297cdc60dde7e3b9c5844";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     caelestia-shell = {
       url = "github:UfukUstali/caelestia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
