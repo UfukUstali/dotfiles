@@ -400,16 +400,6 @@ hl.window_rule({
 	workspace = "10 silent",
 })
 
-local layers = { "wofi", "waybar", "swaync-control-center", "swaync-notification-window" }
-for _, l in ipairs(layers) do
-	hl.layer_rule({
-		name = l .. "-layer-effects",
-		match = { namespace = l },
-		blur = true,
-		ignore_alpha = 0.2,
-	})
-end
-
 hl.window_rule({
 	name = "fix-xwayland-drags",
 	match = {
