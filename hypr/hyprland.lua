@@ -374,7 +374,7 @@ for _, f in ipairs(file_pickers) do
 	})
 end
 
-local tui_utils = { "clipse", "impala", "bluetui" }
+local tui_utils = { "clipse" }
 for _, t in ipairs(tui_utils) do
 	hl.window_rule({
 		name = t .. "-float",
