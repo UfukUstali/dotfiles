@@ -3,6 +3,11 @@
 { config, pkgs, ... }:
 
 {
+  # onlyoffice-desktopeditors still depends on gtk2, which nixpkgs now marks
+  # broken (https://github.com/NixOS/nixpkgs/issues/410814). Drop this once
+  # onlyoffice migrates or is removed.
+  nixpkgs.config.problems.handlers."gtk+".broken = "warn";
+
   home.packages = with pkgs; [
     # fonts and themes
     font-awesome
@@ -56,6 +61,7 @@
   programs.caelestia = {
     enable = true;
     settings = {
+      session.commands.logout = [ "uwsm" "stop" ];
       services.weatherLocation = "giessen";
       general.idle.timeouts = [
         {

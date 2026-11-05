@@ -6,3 +6,4 @@ window-show-tab-bar = never
 keybind = ctrl+enter=toggle_tab_overview
 keybind = alt+h=previous_tab
 keybind = alt+l=next_tab
+gtk-horizontal-tab-scroll = false
