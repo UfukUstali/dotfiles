@@ -61,16 +61,6 @@ zoxide init --cmd cd fish | source
 
 # set -gx XDG_DATA_DIRS $XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share
 
-function rec --description 'Record screen'
-    set name (date +%Y-%m-%d_%H-%M-%S)
-    if test (count $argv) -gt 0
-        set name $argv[1]
-    end
-    set path $HOME/Media/Recordings/$name.mp4
-    mkdir -p (dirname $path)
-    wf-recorder -g (slurp -d) --file=$path
-end
-
 function codediff --description 'Open nvim CodeDiff (default: HEAD~1 HEAD)'
     set -l arg (string join ' ' $argv)
     if test -z "$arg"

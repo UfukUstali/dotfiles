@@ -19,16 +19,19 @@
     google-chrome
     gh
     remmina
-    anydesk
+    # AnyDesk re-uploaded the 8.1.0 tarball in place (2026-11-03), so the
+    # nixpkgs hash is stale. Drop this override once nixpkgs catches up.
+    (anydesk.overrideAttrs (old: {
+      src = fetchurl {
+        url = old.src.url;
+        hash = "sha256-zS5P2eyTHZY7cBW8mQ2Q6M0lXcx9VZZTtpG3Bb6u7IQ=";
+      };
+    }))
     playerctl
     onlyoffice-desktopeditors
     ghostty
     sioyek
-    tectonic-unwrapped
-    grim
-    wf-recorder
-    slurp
-    satty
+    waytator
     zoom-us
 
     # thm vpn

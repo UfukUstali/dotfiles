@@ -261,7 +261,8 @@ bind.m("SHIFT + c", launch("hyprpicker -a -f hex"))
 
 bind.m("f", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
-hl.bind("Print", launch('grim -g "$(slurp)" - | satty --filename -'))
+hl.bind("Print", launch("waytator --screenshot"))
+hl.bind("SHIFT + Print", launch("waytator --record"))
 
 hl.bind("Insert", hl.dsp.send_shortcut({ mods = "CTRL + SHIFT", key = "M", window = "initialtitle:Discord" }))
 hl.bind("ALT + Insert", hl.dsp.send_shortcut({ mods = "CTRL + SHIFT", key = "D", window = "initialtitle:Discord" }))
