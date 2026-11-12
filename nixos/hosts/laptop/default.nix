@@ -14,6 +14,7 @@
     ../../modules/services/unbound.nix
     ../../modules/services/tailscale.nix
     ../../modules/services/libvirt.nix
+    ../../modules/services/bootvine.nix
   ];
 
   networking = {
