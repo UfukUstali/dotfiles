@@ -11,15 +11,27 @@
   # on the resume event is therefore a race. Instead, restart unbound when
   # NetworkManager reports the connection is actually up, and keep infra-host-ttl
   # short so unbound also recovers on its own if a restart is ever missed.
+  #
+  # Only react to the real uplink: at boot every virtual interface (lo, docker,
+  # libvirt, tailscale bridges) fires its own "up", and restarting on each one
+  # trips unbound's start limit and leaves it failed.
   networking.networkmanager.dispatcherScripts = [
     {
       type = "basic";
       source = pkgs.writeShellScript "unbound-restart-on-net-up" ''
         case "$2" in
-          up | connectivity-change)
-            ${pkgs.systemd}/bin/systemctl try-restart unbound.service
+          up)
+            case "$(${pkgs.networkmanager}/bin/nmcli -g GENERAL.TYPE device show "$1" 2>/dev/null)" in
+              wifi | ethernet) ;;
+              *) exit 0 ;;
+            esac
             ;;
+          connectivity-change)
+            [ "$CONNECTIVITY_STATE" = FULL ] || exit 0
+            ;;
+          *) exit 0 ;;
         esac
+        ${pkgs.systemd}/bin/systemctl try-restart unbound.service
       '';
     }
   ];
